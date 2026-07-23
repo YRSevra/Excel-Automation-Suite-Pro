@@ -4,6 +4,7 @@ from src.excel_formatter import ExcelFormatter
 
 engine = ExcelEngine()
 cleaner = DataCleaner()
+formatter = ExcelFormatter()
 
 df = engine.load_file("data/sales_data.csv")
 
@@ -14,6 +15,8 @@ print(df)
 df = cleaner.clean_data(df)
 
 engine.save_excel(df, "output/cleaned_sales.xlsx")
+
+formatter.format_excel("output/cleaned_sales.xlsx")
 
 print(df)
 
