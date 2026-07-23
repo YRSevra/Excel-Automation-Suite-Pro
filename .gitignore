@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual Environment
+.venv/
+
+# Generated Files
+output/
+logs/
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
