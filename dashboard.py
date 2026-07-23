@@ -20,6 +20,31 @@ if uploaded_file is not None:
 else:
     df = pd.read_excel("output/cleaned_sales.xlsx")
 
+st.sidebar.header("Filters")
+
+selected_customer = st.sidebar.selectbox(
+    "Select Customer",
+    ["All"] + sorted(df["Customer"].unique().tolist())
+)
+
+selected_product = st.sidebar.selectbox(
+    "Select Product",
+    ["All"] + sorted(df["Product"].unique().tolist())
+)
+
+filtered_df = df.copy()
+
+if selected_customer != "All":
+    filtered_df = filtered_df[
+        filtered_df["Customer"] == selected_customer
+    ]
+
+if selected_product != "All":
+    filtered_df = filtered_df[
+        filtered_df["Product"] == selected_product
+    ]
+
+df = filtered_df    
 
 sales_chart = df.sort_values(by="Price", ascending=False)
 quantity_chart = df.sort_values(by="Quantity", ascending=False)
