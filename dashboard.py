@@ -11,7 +11,25 @@ st.subheader("Sales Data")
 
 st.dataframe(df, width="stretch")
 
+st.subheader("Sales Chart")
+
+st.bar_chart(
+    data=df,
+    x="Product",
+    y="Price",
+    width="stretch"
+)
+
 st.subheader("Statistics")
+
+st.subheader("Product Quantity")
+
+st.bar_chart(
+    data=df,
+    x="Product",
+    y="Quantity",
+    width="stretch"
+)
 
 col1, col2, col3 = st.columns(3)
 
