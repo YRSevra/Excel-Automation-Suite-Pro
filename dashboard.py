@@ -53,3 +53,23 @@ col1, col2, col3 = st.columns(3)
 col1.metric("Orders", len(df))
 col2.metric("Products", df["Product"].nunique())
 col3.metric("Revenue", f"₹{(df['Quantity']*df['Price']).sum():,}")
+
+st.subheader("Downloads")
+
+col1, col2 = st.columns(2)
+
+with open("output/cleaned_sales.xlsx", "rb") as file:
+    col1.download_button(
+        label="⬇ Download Cleaned Excel",
+        data=file,
+        file_name="cleaned_sales.xlsx",
+        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    )
+
+with open("reports/sales_report.pdf", "rb") as file:
+    col2.download_button(
+        label="⬇ Download PDF Report",
+        data=file,
+        file_name="sales_report.pdf",
+        mime="application/pdf",
+    )
